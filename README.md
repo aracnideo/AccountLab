@@ -40,6 +40,6 @@ The project demonstrates object-oriented design, immutable transaction records, 
 
 ## Author
 
-Marcelo Parabocz
+Marcelo Parabocz <br>
 Backend Developer in progress.
 
