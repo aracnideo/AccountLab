@@ -38,6 +38,6 @@ The project demonstrates object-oriented design, immutable transaction records, 
 - Service layer design
 - Testable architecture design
 
-- ## Author
+## Author
 Marcelo Parabocz
 Backend Developer in progress.
