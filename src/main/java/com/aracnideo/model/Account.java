@@ -10,8 +10,8 @@ public class Account {
 		if (id < 0) {
 			throw new IllegalArgumentException("Invalid id.");
 		}
-		if (ownerName == null) {
-			throw new IllegalArgumentException("Invalid Onwer Name.");
+		if (ownerName == null || ownerName.isBlank()) {
+			throw new IllegalArgumentException("Owner name cannot be null or blank.");
 		}
 		if (balance < 0) {
 			throw new IllegalArgumentException("Initial balance cannot be negative.");
