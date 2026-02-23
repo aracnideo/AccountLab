@@ -49,6 +49,14 @@ public class Transaction {
 		return value;
 	}
 
+	public double getBalanceBefore() {
+		return balanceBefore;
+	}
+
+	public double getBalanceAfter() {
+		return balanceAfter;
+	}
+
 	@Override
 	public String toString() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
