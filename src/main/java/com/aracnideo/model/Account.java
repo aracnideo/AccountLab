@@ -45,14 +45,14 @@ public class Account {
 		this.balance += value;
 	}
 
-	public void withdraw(double value) {
-		if (value <= 0) {
-			throw new IllegalArgumentException("Withdraw value must be greater than zero.");
+		public void withdraw(double value) {
+			if (value <= 0) {
+				throw new IllegalArgumentException("Withdraw value must be greater than zero.");
+			}
+			if (value > this.balance) {
+				throw new IllegalStateException("Insuficient balance.");
+			}
+			this.balance -= value;
 		}
-		if (value > this.balance) {
-			throw new IllegalArgumentException("Insuficient balance.");
-		}
-		this.balance -= value;
-	}
 
 }
