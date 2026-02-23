@@ -38,6 +38,9 @@ public class Bank {
 	}
 
 	public void processTransaction(Account account, TransactionType type, double value) {
+		if (!accounts.contains(account)) {
+		    throw new IllegalArgumentException("Account does not belong to this bank.");
+		}
 		Transaction transaction = new Transaction(account, type, value);
 		this.transactions.add(transaction);
 	}
