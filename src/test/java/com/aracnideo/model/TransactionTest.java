@@ -1,7 +1,11 @@
 package com.aracnideo.model;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
@@ -54,5 +58,23 @@ public class TransactionTest {
 		Transaction transaction = new Transaction(account, TransactionType.DEPOSIT, 500);
 		assertEquals(650, transaction.getBalanceBefore());
 		assertEquals(1150, transaction.getBalanceAfter());
+	}
+
+	@Test
+	void shouldPropagateExceptionWhenWithdrawIsInvalid() {
+		Account account = new Account(33, "Guilhermo", 899);
+		assertThrows(IllegalArgumentException.class, () -> new Transaction(account, TransactionType.WITHDRAW, 900));
+		assertEquals(899, account.getBalance());
+	}
+
+	@Test
+	void shouldSetTimestampWithoutNanos() {
+		Account account = new Account(35, "Hilda", 385);
+		LocalDateTime timeBefore = LocalDateTime.now().withNano(0);
+		Transaction transaction = new Transaction(account, TransactionType.DEPOSIT, 100);
+		LocalDateTime timeAfter = LocalDateTime.now().withNano(0);
+		assertNotNull(transaction.getTimestamp());
+		assertEquals(0, transaction.getTimestamp().getNano());
+		assertTrue(!transaction.getTimestamp().isBefore(timeBefore) && !transaction.getTimestamp().isAfter(timeAfter));
 	}
 }
