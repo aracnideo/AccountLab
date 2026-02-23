@@ -57,6 +57,10 @@ public class Transaction {
 		return balanceAfter;
 	}
 
+	public LocalDateTime getTimestamp() {
+		return timestamp;
+	}
+
 	@Override
 	public String toString() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
